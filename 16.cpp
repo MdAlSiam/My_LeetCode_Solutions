@@ -27,6 +27,7 @@ public:
         return ans;
     }
 };
+
 int main() {
     Solution s;
     // Call s
