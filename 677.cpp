@@ -1,16 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include <bits/stdc++.h>
+using namespace std;
+
 class MapSum {
     struct node {
         int sum;
         bool endPoint;
-        int endVal = 0;
+        int endVal;
         node* child[26];
 
         node() {
             sum = 0;
             endPoint = false;
+            endVal = 0;
             for (int i = 0; i < 26; i++) {
                 child[i] = nullptr;
             }
@@ -18,11 +22,7 @@ class MapSum {
     };
 
 public:
-    /** Initialize your data structure here. */
-
     node* root;
-
-    map<string, int> mp;
 
     MapSum() {
         root = new node();
@@ -40,9 +40,8 @@ public:
         }
 
         if (curr->endPoint == true) {
-
             int prevVal = curr->endVal;
-            int toAdd = val-prevVal;
+            int toAdd = -prevVal+val;
 
             node* curr = root;
 
