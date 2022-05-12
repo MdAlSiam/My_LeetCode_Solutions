@@ -27,7 +27,7 @@ class Solution {
     }
 public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
+        // sort(nums.begin(), nums.end());
         go(0, nums);
         return ans;
     }
