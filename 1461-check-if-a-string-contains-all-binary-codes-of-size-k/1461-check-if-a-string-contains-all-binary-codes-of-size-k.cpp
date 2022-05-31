@@ -3,10 +3,10 @@ public:
     bool hasAllCodes(string s, int k) {
         if (k > s.length()) return false;
         
-        bool present[1<<k];
-        memset(present, false, sizeof(present));
-        
         int last_k_bits_mask = (1<<k)-1;
+        
+        bool present[last_k_bits_mask+1];
+        memset(present, false, sizeof(present));
         
         int curr = 0;
         for (int i = 0; i < k-1; i++) {
@@ -21,7 +21,7 @@ public:
             present[curr] = true;
         }
         
-        for (int i = 0; i < (1<<k); i++) {
+        for (int i = 0; i < last_k_bits_mask+1; i++) {
             if (not present[i]) {
                 return false;
             }
