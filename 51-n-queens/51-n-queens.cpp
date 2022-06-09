@@ -44,8 +44,8 @@ class Solution {
     }
 
 public:
-    vector<vector<string>> solveNQueens(int nn) {
-        n = nn;
+    vector<vector<string>> solveNQueens(int _n) {
+        n = _n;
         init_grid();
         solve(0);
         return ans;
