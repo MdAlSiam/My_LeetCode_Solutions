@@ -15,6 +15,8 @@ public:
             truckSize -= toTake;
 
             ans += toTake*v[1];
+
+            if (!toTake) break;
         }
 
         return ans;
