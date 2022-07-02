@@ -23,7 +23,7 @@ public class Solution {
             maxVertSeg = Math.Max(maxVertSeg, verticalCuts[i]-verticalCuts[i-1]);
             // Console.Write(verticalCuts[i]+" ");
         }
-        Console.WriteLine();
+        // Console.WriteLine();
 
         long mod = 1_000_000_007;
         
