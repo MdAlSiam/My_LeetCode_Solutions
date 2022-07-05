@@ -1,10 +1,5 @@
 public class Solution {
     public int Search(int[] nums, int target) {
-        if (nums.Length == 1) {
-            if (nums[0] == target) return 0;
-            return -1;
-        }
-
         int lo = 0;
         int hi = nums.Length-1;
 
