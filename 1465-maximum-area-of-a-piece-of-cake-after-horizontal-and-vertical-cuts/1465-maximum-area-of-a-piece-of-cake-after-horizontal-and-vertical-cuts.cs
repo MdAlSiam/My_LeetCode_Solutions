@@ -22,7 +22,7 @@ public class Solution {
 
         long mod = 1_000_000_007;
         
-        long ans = (maxHorizSeg*maxVertSeg)%mod;
+        long ans = ((maxHorizSeg%mod)*(maxVertSeg%mod))%mod;
 
         return (int) ans;
     }
