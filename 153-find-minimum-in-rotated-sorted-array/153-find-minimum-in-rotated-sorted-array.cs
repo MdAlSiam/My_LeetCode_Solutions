@@ -23,7 +23,7 @@ public class Solution {
                 }
                 else {
                     // Right Portion
-                    if (mid-1 < 0 || nums[mid-1] > nums[mid]) return nums[mid];
+                    if (nums[mid-1] > nums[mid]) return nums[mid];
                     else hi = mid-1;
                 }
             }
