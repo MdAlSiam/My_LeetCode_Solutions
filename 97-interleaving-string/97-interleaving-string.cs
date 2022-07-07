@@ -5,14 +5,23 @@ public class Solution {
 
     int[,] dp = new int[,] {{}};
 
-    bool go(int i, int j, int k) {
-        // Console.WriteLine(">>"+i+" "+j+" "+k);
-        if (dp[i,j] != -1) {
-            return dp[i,j] == 1 ? true : false;
+    void init_dp() {
+        dp = new int[s1.Length+1,s2.Length+1];
+
+        for (int i = 0; i <= s1.Length; i++) {
+            for (int j = 0; j <= s2.Length; j++) {
+                dp[i,j] = -1;
+            }
         }
-        
+    }
+
+    bool go(int i, int j, int k) {
         if (i == s1.Length && j == s2.Length && k == s3.Length) {
             return true;
+        }
+
+        if (dp[i,j] != -1) {
+            return dp[i, j] == 1 ? true : false;
         }
 
         bool ret1 = false;
@@ -26,12 +35,9 @@ public class Solution {
             ret2 = go(i, j+1, k+1);
         }
 
-        bool ret = ret1 || ret2;
+        dp[i, j] = ret1 | ret2 ? 1 : 0;
 
-        if (ret) dp[i,j] = 1;
-        else dp[i,j] = 0;
-
-        return ret;
+        return ret1 | ret2;
     }
 
     public bool IsInterleave(string _s1, string _s2, string _s3) {
@@ -39,12 +45,7 @@ public class Solution {
         s2 = _s2;
         s3 = _s3;
 
-        dp = new int[s1.Length+1,s2.Length+1];
-        for (int i = 0; i <= s1.Length; i++) {
-            for (int j = 0; j <= s2.Length; j++) {
-                dp[i,j] = -1;
-            }
-        }
+        init_dp();
 
         return go(0, 0, 0);
     }
