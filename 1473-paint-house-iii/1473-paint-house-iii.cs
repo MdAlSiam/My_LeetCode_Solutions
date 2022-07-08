@@ -54,11 +54,11 @@ public class Solution {
         n = _n;
         target = _target;
 
-        dp = new int[m+10,n+10,target+4];
+        dp = new int[m,n+1,target+1];
 
-        for (int i = 0; i < m+10; i++) 
-            for (int j = 0; j < n+10; j++) 
-                for (int k = 0; k < target+4; k++)
+        for (int i = 0; i < m; i++) 
+            for (int j = 0; j < n+1; j++) 
+                for (int k = 0; k < target+1; k++)
                     dp[i,j,k] = -1;
 
         // int homeIndex, int colorIndex, int segmentSoFar
