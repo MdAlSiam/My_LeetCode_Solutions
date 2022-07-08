@@ -1,6 +1,4 @@
 public class Solution {
-    bool debug = false;
-    
     int[] houses = new int[] {};
     int[][] cost = new int[][] {};
     int m; // nHomes
@@ -12,54 +10,28 @@ public class Solution {
     int[,,] dp = new int[,,] {};
 
     int go(int homeIndex, int colorIndex, int segmentSoFar) {
+        if (homeIndex >= m) {
+            if (segmentSoFar == target) return 0;
+            return 1_000_000_000;
+        }
+
         if (segmentSoFar > target) {
             return 1_000_000_000;
         }
 
-        if (homeIndex >= m) {
-            if (debug) Console.WriteLine(">"+segmentSoFar+" "+"X"+" target = "+target);
-
-            if (debug) {
-                for (int i = 0; i < m; i++) {
-                    Console.Write(houses[i]+"|");
-                } Console.WriteLine(" C1");
-            }
-
-            if (segmentSoFar == target) {
-                return 0;
-            }
-
-            return 1_000_000_000;
-        }
-
         if (dp[homeIndex, colorIndex, segmentSoFar] != -1) {
-            if (debug) 
-                Console.WriteLine("DP->"+homeIndex+" "+colorIndex+" :"+dp[homeIndex,colorIndex,segmentSoFar]);
-            if (debug) {
-                for (int i = 0; i < m; i++) {
-                    Console.Write(houses[i]+" ");
-                } Console.WriteLine(" C2");
-            }
-
             return dp[homeIndex, colorIndex, segmentSoFar];
         }
 
         int ret = 1_000_000_000;
-        // int ret2 = 1_000_000_000;
-        // int ret3 = 1_000_000_000;
-        // int ret4 = 1_000_000_000;
 
         if (houses[homeIndex] == 0) {
             for (int i = 0; i < n; i++) {
                 if (i+1 != colorIndex) {
-                    houses[homeIndex] = i+1;
                     ret = Math.Min(ret, cost[homeIndex][i] + go(homeIndex+1, i+1, segmentSoFar+1));
-                    houses[homeIndex] = 0;
                 }
                 else {
-                    houses[homeIndex] = i+1;
                     ret = Math.Min(ret, cost[homeIndex][i] + go(homeIndex+1, i+1, segmentSoFar));
-                    houses[homeIndex] = 0;
                 }
             }
         }
@@ -71,12 +43,6 @@ public class Solution {
                 ret = Math.Min(ret, go(homeIndex+1, houses[homeIndex], segmentSoFar));
             }
         }
-
-        // int retval = 1_000_000_000;
-        // retval = Math.Min(retval, ret1);
-        // retval = Math.Min(retval, ret2);
-        // retval = Math.Min(retval, ret3);
-        // retval = Math.Min(retval, ret4);
 
         return dp[homeIndex, colorIndex, segmentSoFar] = ret;
     }
@@ -94,8 +60,6 @@ public class Solution {
             for (int j = 0; j < n+10; j++) 
                 for (int k = 0; k < target+4; k++)
                     dp[i,j,k] = -1;
-
-        if (debug) Console.WriteLine("DP Initiated: "+(m+10-1)+" "+(n+10-1));
 
         // int homeIndex, int colorIndex, int segmentSoFar
         ans = go(0, 0, 0);
