@@ -15,13 +15,11 @@ public class Solution {
         grid[r][c] = 2;
         
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                int newR = r+dx[i];
-                int newC = c+dy[i];
-                
-                if(isValid(ref grid, newR, newC)) {
-                    ret += dfs(ref grid, newR, newC);
-                }
+            int newR = r+dx[i];
+            int newC = c+dy[i];
+
+            if(isValid(ref grid, newR, newC)) {
+                ret += dfs(ref grid, newR, newC);
             }
         }
         
