@@ -1,6 +1,7 @@
 class Solution {
 public:
-    int lengthOfLIS(vector<int>& nums) {
+    int lengthOfLIS_DP(vector<int>& nums) {
+        // TC: O(n^2)
         int dp[nums.size()];
 
         for (int i = 0; i < nums.size(); i++) {
@@ -21,5 +22,21 @@ public:
         }
 
         return ans;
+    }
+
+    int lengthOfLIS(vector<int>& nums) {
+        // TC: O(n*log n)
+        vector<int> tail;
+
+        for (int num : nums) {
+            if (tail.empty() || num > tail.back()) {
+                tail.push_back(num);
+            }
+            else {
+                tail[lower_bound(tail.begin(), tail.end(), num) - tail.begin()] = num;
+            }
+        }
+
+        return (int) tail.size();
     }
 };
