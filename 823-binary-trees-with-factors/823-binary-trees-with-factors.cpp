@@ -32,9 +32,9 @@ public:
             mp[arr[i]] += kount;
         }
 
-        long long int ans = 0;
+        int ans = 0;
         for (int num : arr) ans = add(ans, mp[num]);
 
-        return (int) ans;
+        return ans;
     }
 };
