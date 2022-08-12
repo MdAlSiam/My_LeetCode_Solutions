@@ -31,7 +31,7 @@ class Solution {
             leftMax = leftVals.second;
 
             if (leftMax < curr->val);
-            else ans = false;
+            else {ans = false; return {0, 0};}
         }
 
         if (curr->right) {
@@ -41,13 +41,13 @@ class Solution {
             rightMax = rightVals.second;
 
             if (rightMin > curr->val);
-            else ans = false;
+            else {ans = false; return {0, 0};}
         }
 
         if (curr->left and curr->right) return {min((int)leftMin, curr->val), max((int)rightMax, curr->val)};
         else if (curr->left) return {min((int)leftMin, curr->val), max((int)leftMax, curr->val)};
         else if (curr->right) return {min((int)rightMin, curr->val), max((int)rightMax, curr->val)};
-        return {0, 0};
+        return {0, 0}; // Won't ever hit
     }
 public:
     bool isValidBST(TreeNode* root) {
