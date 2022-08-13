@@ -6,14 +6,14 @@ public:
         int winSize = words.size()*words[0].size();
         int wordSize = words[0].size();
 
-        unordered_map<string, int> mp;
+        map<string, int> mp;
 
         for (string word : words) {
             mp[word]++;
         }
 
         for (int i = 0; i+winSize <= s.length(); i++) { 
-            unordered_map<string, int> new_mp;
+            map<string, int> new_mp;
             new_mp.clear();
 
             string temp = "";
