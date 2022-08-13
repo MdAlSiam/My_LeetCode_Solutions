@@ -14,7 +14,6 @@ public:
 
         for (int i = 0; i+winSize <= s.length(); i++) { 
             map<string, int> new_mp;
-            new_mp.clear();
 
             string temp = "";
             int kount = wordSize;
