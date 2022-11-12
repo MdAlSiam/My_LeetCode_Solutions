@@ -1,8 +1,8 @@
 class Solution {
-    typedef struct{
+    struct myNode {
         TreeNode* node;
         int sumHere;
-    } myNode;
+    };
 
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
