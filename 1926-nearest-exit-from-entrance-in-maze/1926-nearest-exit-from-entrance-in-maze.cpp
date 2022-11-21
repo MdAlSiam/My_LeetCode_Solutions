@@ -20,16 +20,8 @@ public:
         roSize = maze.size();
         colSize = maze[0].size();
 
-        vector<vector<int>> levels;
-        for (int i = 0; i < maze.size(); i++) {
-            vector<int> temp;
-            for (int j = 0; j < maze[0].size(); j++) {
-                temp.push_back(inf);
-            }
-            levels.push_back(temp);
-            temp.clear();
-        }
-
+        vector<vector<int>> levels(roSize, vector<int>(colSize, inf));
+        
         queue<pair<int, int>> q;
         levels[entrance[0]][entrance[1]] = 0;
         q.push({entrance[0], entrance[1]});
