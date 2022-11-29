@@ -26,6 +26,7 @@ public:
             int lastVal = numList[numList.size()-1];
             numList[idx] = lastVal;
             numList.pop_back();
+            
             numMap[lastVal] = idx;
             numMap.erase(val);
         }
