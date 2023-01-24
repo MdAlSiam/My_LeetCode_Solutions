@@ -35,7 +35,7 @@ public:
             q.pop();
 
             for (int i = curr+1; i <= curr+6; i++) {
-                if (i >= n*n) continue;
+                if (i >= n*n) break;
 
                 if (flattenedBoard[i] == -1) {
                     if (levels[i] == -1) {
