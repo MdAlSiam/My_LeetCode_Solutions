@@ -12,6 +12,7 @@ public:
         for (int i = 0; i < fruits.size(); i++) {
             if (fruits[i] != currNum) {
                 if (fruits[i] != prevNum) {
+                    ans = max(ans, currStreak);
                     currStreak = lastNumStreak+1;
                 }
                 else {
@@ -23,14 +24,13 @@ public:
                 prevNum = currNum;
                 currNum = fruits[i];
 
-                ans = max(ans, currStreak);
                 continue;
             }
 
             currStreak++;
             lastNumStreak++;
-            ans = max(ans, currStreak);
         }
+        ans = max(ans, currStreak);
 
         return ans;
     }
