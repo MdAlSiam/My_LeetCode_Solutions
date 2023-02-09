@@ -14,7 +14,7 @@ public:
                 int nCommon = 0;
                 for (set<string>::iterator it = suffixes[i].begin(); it != suffixes[i].end(); it++) {
                     string str = *it;
-                    if(suffixes[j].count(str)) nCommon++; 
+                    nCommon += suffixes[j].count(str); 
                 } 
                 ans += 2*(suffixes[i].size()-nCommon)*(suffixes[j].size()-nCommon);
             }
