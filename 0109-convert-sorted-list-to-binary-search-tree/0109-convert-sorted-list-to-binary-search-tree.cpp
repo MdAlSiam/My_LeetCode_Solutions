@@ -29,7 +29,7 @@ class Solution {
         ListNode* slow = start;
         ListNode* fast = start;
 
-        while (fast != stop and fast->next != stop) {
+        while (fast->next != stop and fast->next->next != stop) {
             slow = slow->next;
             fast = fast->next->next;
         }
