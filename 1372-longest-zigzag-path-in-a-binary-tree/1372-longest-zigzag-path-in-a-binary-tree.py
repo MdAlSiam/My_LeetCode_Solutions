@@ -9,10 +9,7 @@ class Solution:
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
         def dfs(curr, left, right):
             if not curr:
-                if left: return left-1
-                elif right: return right-1
-                else: return 0
-            print(f"> {left} {right}")
+                return max(0, left-1, right-1)
             ans = max(left, right)
             if left: 
                 ans = max(ans, dfs(curr.left, 1, 0))
@@ -22,12 +19,4 @@ class Solution:
                 ans = max(ans, dfs(curr.right, 0, 1))
             return ans
         
-        print("------------------")
-        if not root:
-            return 0
-        elif not root.right:
-            return dfs(root.left, 1, 0)
-        elif not root.left:
-            return dfs(root.right, 0, 1)
-        else:
-            return max(dfs(root.left, 1, 0), dfs(root.right, 0, 1))
+        return max(dfs(root.left, 1, 0), dfs(root.right, 0, 1))
