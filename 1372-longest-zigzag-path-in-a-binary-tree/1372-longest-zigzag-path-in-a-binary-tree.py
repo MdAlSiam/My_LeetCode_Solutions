@@ -10,7 +10,7 @@ class Solution:
         def dfs(curr, left, right):
             if not curr:
                 return max(left-1, right-1)
-            ans = 0
+            ans = 1
             if left: 
                 ans = max(ans, dfs(curr.left, 1, 0))
                 ans = max(ans, dfs(curr.right, 0, left+1))
