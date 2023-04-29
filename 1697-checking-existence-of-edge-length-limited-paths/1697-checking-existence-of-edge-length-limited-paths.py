@@ -1,6 +1,7 @@
 class DSU:
     def __init__(self, n):
         self.parents = list(range(n))
+        self.ranks = [1]*n
     
     def find_parent(self, node):
         if self.parents[node] == node:
@@ -15,7 +16,12 @@ class DSU:
         if u == v:
             return
         
-        self.parents[v] = u
+        if self.ranks[u] > self.ranks[v]:
+            self.parents[v] = u
+            self.ranks[u] += self.ranks[v]
+        else:
+            self.parents[u] = v
+            self.ranks[v] += self.ranks[u]
 
 
 class Solution:
